@@ -2,15 +2,15 @@
 Luana Cheda
 Janine Laura Hindermann
 
-Forked GitHub repository JoeyNMT: 
-https://github.com/janinelaura-hindermann/joeynmt
-
-Cloned GitHub repository exercise 4:
+Forked GitHub repository exercise 4:
 https://github.com/janinelaura-hindermann/mt-exercise-4
+
+Forked GitHub repository hotfixed JoeyNMT:
+https://github.com/janinelaura-hindermann/joeynmt
 
 # 1. Understanding Code: LayerNorm in JoeyNMT
 
-Taking a look at the [JoeyNMT repository](https://github.com/janinelaura-hindermann/joeynmt), in the following files you can find layer normalization:
+Taking a look at the [JoeyNMT repository](https://github.com/joeynmt/joeynmt), in the following files you can find layer normalization:
 - `transformer_layers.py`
 - `encoders.py`
 - `decoders.py`
@@ -291,5 +291,20 @@ So in short, if you don't specify the `layer_norm` in the config file (`.yaml` f
 
 # 2. Implementing Pre- and Post-Normalization
 
-- config file: `deen_transformer_pre.yaml`
-- 
+## Implementation
+
+We added configuration files for the pre- and post-normalization in the `config` directory:
+- `model_pre.yaml`
+- `model_post.yaml`
+
+To extract the perplexities of the log file, please take a look at the `visualizaiton` directory.
+There you can find the `extract_perplexities_from_logs.py` which creates a dataframe stored in a .csv file called `perplexity_comparison.csv`. 
+
+To draw the table, run the `create_table.py` script:
+![Perplexity Comparison Table](../visualization/perplexity_comparison_table.png)
+
+To draw the line chart, run the `create_line_chart.py` script:
+![Perplexity Line Chart](../visualization/perplexity_comparison.png)
+
+##  Discussion
+
