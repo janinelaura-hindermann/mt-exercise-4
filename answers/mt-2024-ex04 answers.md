@@ -314,14 +314,22 @@ To draw the line chart, run the `create_line_chart.py` script:
 **Given that there is a difference in the training progress for the three models, can you think of a reason for it?**
 
 From the line chart above, we can see that there are differences in training progress between the baseline, pre-norm, and post-norm models. 
+
+Generally, there are big differences at the starting perplexity. The base-line model starts with the highest perplexity (56.61), the pre-norm model has a bit lower perplexity (44.79) and the post-norm model started off with the lowest perplexity (41.5). Overall, the pre-norm model shows the smoothest decreasing line, where as the post-norm model shows the most irregular decreasing line. In the end, all of the three models show more close perplexities than at the beginning (8.01, 7.83 and 8.59).
+
 In this case, this difference could be attributed to the position of layer normalization within the model architecture.
-The pre-norm model started from a higher perplexity (44.79) compared to the post-norm, but then demonstrated earlier and more stable reductions in perplexity, which may be due to the normalization being applied before the sub-layers. This configuration potentially stabilizes the input to each sub-layer, reducing internal covariate shifts and facilitating smoother gradient flow.
-The post-norm model started off with a lower perplexity (41.5) but then it decreased at a slower rate than pre-norm, possibly due to the application of normalization after the residual connections. This setup might lead to challenges in gradient stability, especially in deeper networks, leading to slower initial progress in training.
+
+The **pre-norm** model started from a higher perplexity compared to the post-norm, but then demonstrated earlier and more stable reductions in perplexity, which may be due to the normalization being applied before the sub-layers. This configuration potentially stabilizes the input to each sub-layer, reducing internal covariate shifts and facilitating smoother gradient flow.
+
+The **post-norm** model started off with the lowest perplexity, but then it decreased at a slower rate than pre-norm, possibly due to the application of normalization after the residual connections. This setup might lead to challenges in gradient stability, especially in deeper networks, leading to slower initial progress in training.
+
 These differences may suggest that the choice of normalization strategy can influence the learning dynamics and efficiency of the model, but since we kept the same hyperparameters we can’t conclude that one model is better than the other. It's plausible to consider that pre-norm configurations might bring a certain degree of robustness to model training, allowing for more consistent learning across various conditions. 
 
 **Differences from Wang et. al. 2019**
 
 Our experimental setup differs from Wang et. al. 2019 on a model depth level. They used much deeper models (up to 30 layers), focusing on the benefits of deep network architectures, which should be more sensitive to normalization strategies. Therefore, the models of the exercise, being less deep, may not fully replicate the amount of benefit observed by Wang et al. 2019 with pre-norm, as the benefits of this approach become more pronounced as the depth of the model increases.
+
 Reading the paper by Wang et. al. 2019 we came to understand that they proposed an approach based on dynamic linear combination of layers (DLCL) to memorize the features extracted from all preceding layers. So perhaps by excluding DLCL we may not see the same level of performance improvement.
+
 For these reasons, our results should be considered indicative rather than conclusive, reflecting the behavior of normalization strategies within the specific boundaries of our experimental parameters. At the same time made us reflect on how architectural choices can affect the performance of machine translation in neural models.
 
