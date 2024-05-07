@@ -1,5 +1,5 @@
 
-Luana Cheda
+Luana Cheda, 
 Janine Laura Hindermann
 
 Forked GitHub repository exercise 4:
@@ -7,6 +7,9 @@ https://github.com/janinelaura-hindermann/mt-exercise-4
 
 Forked GitHub repository hotfixed JoeyNMT:
 https://github.com/janinelaura-hindermann/joeynmt
+
+You find this document as a markdown in the `answers` directory too:
+https://github.com/janinelaura-hindermann/mt-exercise-4/blob/main/answers/mt-2024-ex04%20answers.md
 
 # 1. Understanding Code: LayerNorm in JoeyNMT
 
